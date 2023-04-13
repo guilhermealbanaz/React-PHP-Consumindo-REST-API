@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
-import { Table, Title } from './style';
+import { Link } from 'react-router-dom';
+import {Container, ContentTitle, ButtonAction, ButtonSubmit, Table, Title } from './style';
 
 export const Home = () => {
 
@@ -16,8 +16,15 @@ export const Home = () => {
     getProdutos();
   }, [])
   return (
-    <div>
-      <Title>Listar</Title>
+    <Container>
+      <ContentTitle>
+        <Title>Listar</Title>
+        <ButtonAction>
+          <Link to="/cadastrar">
+            <ButtonSubmit>Cadastrar Novas Descrições</ButtonSubmit>
+          </Link>
+        </ButtonAction>
+      </ContentTitle>
       <Table>
         <thead>
           <tr>
@@ -46,6 +53,6 @@ export const Home = () => {
           ))}
         </tbody>
       </Table>
-    </div>
+    </Container>
   );
 }
