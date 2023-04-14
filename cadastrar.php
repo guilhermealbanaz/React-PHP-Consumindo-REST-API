@@ -14,9 +14,16 @@ if($data){
 
     $query = "INSERT INTO produtos (titulo,descricao) VALUES(:titulo, :descricao)";
     $cad_product = $conn->prepare($query);
-    
-    $cad_product->bindParam(':titulo', $data['prod']['titulo']);
-    $cad_product->bindParam(':descricao', $data['prod']['descricao']);
+
+    // if(empty($data['prod']['titulo']) OR empty($data['prod']['descricao'])) {
+    //     $response = [
+    //         "erro" => true,
+    //         "message" => "Preencha os campos corretamente"
+    //     ];
+    // }
+
+    $cad_product->bindParam(':titulo', $data['prod']['titulo'], PDO::PARAM_STR);
+    $cad_product->bindParam(':descricao', $data['prod']['descricao'], PDO::PARAM_STR);
 
     $cad_product->execute();
 
